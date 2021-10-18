@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyNasaApp</string>
+    <string name="hintWikiSearch">Введите слово для поиска</string>
+    <string name="searchOnWikiCaption">Search on Wiki</string>
+</resources>
