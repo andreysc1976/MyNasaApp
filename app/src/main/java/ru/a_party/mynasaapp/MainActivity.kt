@@ -3,6 +3,8 @@ package ru.a_party.mynasaapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,5 +25,24 @@ class MainActivity : AppCompatActivity() {
                 .commitNow()
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        getMenuInflater().inflate(R.menu.options_menu,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.themesSun->{
+                setTheme(R.style.Theme_Sun)
+                recreate()
+            }
+            R.id.themesMars->{
+                setTheme(R.style.Theme_Mars)
+                recreate()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
