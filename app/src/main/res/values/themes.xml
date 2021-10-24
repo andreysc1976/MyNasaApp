@@ -13,4 +13,39 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.Mars" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/mars1</item>
+        <item name="colorPrimaryVariant">@color/mars1</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/mars1</item>
+        <item name="colorSecondaryVariant">@color/mars1</item>
+        <item name="colorOnSecondary">@color/mars1</item>
+        <item name="colorBackgroundFloating">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.Sun" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/yellow1</item>
+        <item name="colorPrimaryVariant">@color/yellow1</item>
+        <item name="colorOnPrimary">@color/yellow1</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/yellow1</item>
+        <item name="colorSecondaryVariant">@color/yellow1</item>
+        <item name="colorOnSecondary">@color/yellow1</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="MyTextLayout" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:textColorHint">@color/yellow1</item>
+    </style>
+
+
 </resources>

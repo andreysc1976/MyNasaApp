@@ -2,6 +2,7 @@ package ru.a_party.mynasaapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -13,12 +14,33 @@ import ru.a_party.mynasaapp.ui.main.MainFragment
 import ru.a_party.mynasaapp.ui.main.NetworkService
 
 val API_KEY:String="rN0em65SRqhgW0KbedmHE5NU0uCcUtnQc6xqYC6V"
+val KEY_CUSTOM_THEME_CHECKED:String="theme_name_nasa"
 
 class MainActivity : AppCompatActivity() {
 
+    private val preference by lazy {
+        PreferenceManager.getDefaultSharedPreferences(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        preference?.getString(KEY_CUSTOM_THEME_CHECKED,null)?.let{
+            when (it){
+                "mars"->{
+                    setTheme(R.style.Theme_Mars)
+                }
+                "sun"->{
+                    setTheme(R.style.Theme_Sun)
+                }
+                "system"->{
+                    //все само отработает
+                }
+            }
+        }
+
         setContentView(R.layout.main_activity)
+
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, MainFragment.newInstance())
@@ -35,11 +57,21 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.themesSun->{
-                setTheme(R.style.Theme_Sun)
+                preference.edit()
+                    .putString(KEY_CUSTOM_THEME_CHECKED, "sun")
+                    .apply()
                 recreate()
             }
             R.id.themesMars->{
-                setTheme(R.style.Theme_Mars)
+                preference.edit()
+                    .putString(KEY_CUSTOM_THEME_CHECKED, "mars")
+                    .apply()
+                recreate()
+            }
+            R.id.defaultTheme->{
+                preference.edit()
+                    .putString(KEY_CUSTOM_THEME_CHECKED, "system")
+                    .apply()
                 recreate()
             }
         }
