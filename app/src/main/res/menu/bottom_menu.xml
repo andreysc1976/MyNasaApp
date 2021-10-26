@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navMenuToday"
+        android:icon="@drawable/ic_baseline_today_24"
+        android:title="Сегодня" />
+    <item
+        android:id="@+id/navMenuEarth"
+        android:title="Земля" />
+    <item
+        android:id="@+id/navMenuSettings"
+        android:title="Settings" />
+</menu>

@@ -3,20 +3,22 @@ package ru.a_party.mynasaapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import ru.a_party.mynasaapp.ui.main.AdopNasaData
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.tabs.TabLayout
 import ru.a_party.mynasaapp.ui.main.MainFragment
-import ru.a_party.mynasaapp.ui.main.NetworkService
+import ru.a_party.mynasaapp.ui.main.MyViewPagerAdapter
+
 
 val API_KEY:String="rN0em65SRqhgW0KbedmHE5NU0uCcUtnQc6xqYC6V"
 val KEY_CUSTOM_THEME_CHECKED:String="theme_name_nasa"
 
 class MainActivity : AppCompatActivity() {
+
+    var currentTheme = "system"
 
     private val preference by lazy {
         PreferenceManager.getDefaultSharedPreferences(this)
@@ -37,15 +39,36 @@ class MainActivity : AppCompatActivity() {
                     //все само отработает
                 }
             }
+            currentTheme=it
         }
 
-        setContentView(R.layout.main_activity)
+        setContentView(R.layout.main_activity_r)
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
-                .commitNow()
-        }
+
+
+        val myViewPager = findViewById<ViewPager>(R.id.viewpager)
+        myViewPager.adapter = MyViewPagerAdapter(supportFragmentManager)
+        findViewById<TabLayout>(R.id.tabLayout).setupWithViewPager(myViewPager)
+
+
+        myViewPager.setOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                //
+            }
+
+            override fun onPageSelected(position: Int) {
+
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                //
+            }
+
+        })
 
     }
 
@@ -54,25 +77,25 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    fun selectTheme(name:String){
+        if (name!=currentTheme) {
+            preference.edit()
+                .putString(KEY_CUSTOM_THEME_CHECKED, name)
+                .apply()
+            recreate()
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.themesSun->{
-                preference.edit()
-                    .putString(KEY_CUSTOM_THEME_CHECKED, "sun")
-                    .apply()
-                recreate()
+                selectTheme("sun")
             }
             R.id.themesMars->{
-                preference.edit()
-                    .putString(KEY_CUSTOM_THEME_CHECKED, "mars")
-                    .apply()
-                recreate()
+                selectTheme("mars")
             }
             R.id.defaultTheme->{
-                preference.edit()
-                    .putString(KEY_CUSTOM_THEME_CHECKED, "system")
-                    .apply()
-                recreate()
+                selectTheme("system")
             }
         }
         return super.onOptionsItemSelected(item)

@@ -1,8 +1,7 @@
-package ru.a_party.mynasaapp.ui.main
+package ru.a_party.mynasaapp.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 
 class NetworkService private constructor() {
@@ -28,7 +27,7 @@ class NetworkService private constructor() {
             .build()
     }
 
-    fun getJsonApi():JsonGetterApi{
+    fun getJsonApi(): JsonGetterApi {
         return mRetrofit.create(JsonGetterApi::class.java)
     }
 }
