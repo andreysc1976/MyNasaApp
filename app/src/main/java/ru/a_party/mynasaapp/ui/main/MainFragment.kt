@@ -3,10 +3,8 @@ package ru.a_party.mynasaapp.ui.main
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import com.google.android.material.textview.MaterialTextView
 import com.squareup.picasso.Picasso
@@ -53,5 +51,4 @@ class MainFragment : Fragment() {
         }
         viewModel.loadData()
     }
-
 }

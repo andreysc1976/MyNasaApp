@@ -2,4 +2,7 @@
     <string name="app_name">MyNasaApp</string>
     <string name="hintWikiSearch">Введите слово для поиска</string>
     <string name="searchOnWikiCaption">Search on Wiki</string>
+    <string name="marsThemeCaptionMenu">Марсианская тема</string>
+    <string name="sunThemeCaptionMenu">Солнечная тема</string>
+    <string name="systemThemeCaptionMenu">Системный настройки</string>
 </resources>
