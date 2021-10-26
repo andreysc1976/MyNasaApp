@@ -17,6 +17,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import ru.a_party.mynasaapp.API_KEY
 import ru.a_party.mynasaapp.R
+import android.content.Intent
+
+
+
 
 class MainFragment : Fragment() {
 
@@ -48,10 +52,14 @@ class MainFragment : Fragment() {
                     var imgView = view.findViewById<AppCompatImageView>(R.id.appCompatImageView)
                     var videoView = view.findViewById<WebView>(R.id.webView2)
                     if (it.nasaData.media_type!="video") {
-                        imgView.visibility = View.VISIBLE
                         Picasso.get().load(it.nasaData.url).into(imgView)
                     } else {
-                        //сегодня видими упало видео)
+                        imgView.setImageResource(R.drawable.ic_video_pic_foreground)
+                        imgView.setOnClickListener {img->
+                            val address = Uri.parse(it.nasaData.url)
+                            val openlink = Intent(Intent.ACTION_VIEW, address)
+                            startActivity(Intent.createChooser(openlink, "Browser"))
+                        }
                     }
                 }
                 is AdopLoadState.Failure -> {

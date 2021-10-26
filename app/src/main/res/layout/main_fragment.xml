@@ -37,7 +37,7 @@
                 android:id="@+id/appCompatImageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/apod" />
+                app:srcCompat="@mipmap/ic_loadind_pic" />
 
             <WebView
                 android:id="@+id/webView2"

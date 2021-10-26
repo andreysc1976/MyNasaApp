@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import ru.a_party.mynasaapp.MainActivity
 import ru.a_party.mynasaapp.R
@@ -23,6 +24,15 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view =  inflater.inflate(R.layout.settings_fragment, container, false)
+
+        (requireActivity() as MainActivity)?.let {
+            when(it.currentTheme){
+                "sun"->{view.findViewById<Chip>(R.id.chip4).isChecked=true}
+                "mars"->{view.findViewById<Chip>(R.id.chip5).isChecked=true}
+                else ->{view.findViewById<Chip>(R.id.chip6).isChecked=true}
+            }
+        }
+
         view.findViewById<ChipGroup>(R.id.chipGroup).setOnCheckedChangeListener(object:
             ChipGroup.OnCheckedChangeListener{
             override fun onCheckedChanged(group: ChipGroup?, checkedId: Int) {

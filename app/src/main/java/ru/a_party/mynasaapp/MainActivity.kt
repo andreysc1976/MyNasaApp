@@ -18,7 +18,7 @@ val KEY_CUSTOM_THEME_CHECKED:String="theme_name_nasa"
 
 class MainActivity : AppCompatActivity() {
 
-    private var currentTheme = "system"
+    var currentTheme = "system"
 
     private val preference by lazy {
         PreferenceManager.getDefaultSharedPreferences(this)
