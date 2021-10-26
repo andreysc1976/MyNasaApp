@@ -5,4 +5,7 @@
     <string name="marsThemeCaptionMenu">Марсианская тема</string>
     <string name="sunThemeCaptionMenu">Солнечная тема</string>
     <string name="systemThemeCaptionMenu">Системный настройки</string>
+    <string name="chipSystemCaption">Системная</string>
+    <string name="chipMarsCaption">Марс</string>
+    <string name="chipSunCaption">Солнце</string>
 </resources>

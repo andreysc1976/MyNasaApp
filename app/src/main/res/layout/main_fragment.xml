@@ -30,8 +30,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/appCompatImageView"
@@ -39,12 +39,19 @@
                 android:layout_height="wrap_content"
                 app:srcCompat="@mipmap/apod" />
 
+            <WebView
+                android:id="@+id/webView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/materialTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="24"
                 android:minLines="12" />
+
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
