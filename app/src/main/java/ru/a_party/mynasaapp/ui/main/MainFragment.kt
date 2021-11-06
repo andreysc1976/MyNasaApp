@@ -18,8 +18,8 @@ import retrofit2.Response
 import ru.a_party.mynasaapp.API_KEY
 import ru.a_party.mynasaapp.R
 import android.content.Intent
-
-
+import androidx.constraintlayout.motion.widget.MotionLayout
+import java.lang.Exception
 
 
 class MainFragment : Fragment() {
@@ -35,7 +35,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        return inflater.inflate(R.layout.main_fragment_start_cl, container, false)
     }
 
     override fun onViewCreated(view: View,savedInstanceState: Bundle?) {
@@ -50,10 +50,21 @@ class MainFragment : Fragment() {
                 is AdopLoadState.Success -> {
                     view.findViewById<MaterialTextView>(R.id.materialTextView).text=it.nasaData.explanation
                     var imgView = view.findViewById<AppCompatImageView>(R.id.appCompatImageView)
-                    var videoView = view.findViewById<WebView>(R.id.webView2)
+                    //var videoView = view.findViewById<WebView>(R.id.webView2)
+                    var motion = view.findViewById<MotionLayout>(R.id.motion)
                     if (it.nasaData.media_type!="video") {
-                        Picasso.get().load(it.nasaData.url).into(imgView)
+                        Picasso.get().load(it.nasaData.url).into(imgView, object: com.squareup.picasso.Callback {
+                            override fun onSuccess() {
+                                motion.transitionToEnd()
+                            }
+
+                            override fun onError(e: Exception?) {
+
+                            }
+
+                        })
                     } else {
+                        motion.transitionToEnd()
                         imgView.setImageResource(R.drawable.ic_video_pic_foreground)
                         imgView.setOnClickListener {img->
                             val address = Uri.parse(it.nasaData.url)
