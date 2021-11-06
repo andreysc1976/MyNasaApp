@@ -8,4 +8,5 @@
     <string name="chipSystemCaption">Системная</string>
     <string name="chipMarsCaption">Марс</string>
     <string name="chipSunCaption">Солнце</string>
+    <string name="aboutCaption">Автор: Студент какого то курса :)</string>
 </resources>

@@ -5,7 +5,7 @@
     <Transition
         motion:constraintSetEnd="@layout/main_fragment_end_cl"
         motion:constraintSetStart="@layout/main_fragment_start_cl"
-        motion:duration="2000">
+        motion:duration="700">
     </Transition>
 
 </MotionScene>
