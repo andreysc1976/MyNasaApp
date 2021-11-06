@@ -2,8 +2,8 @@ package ru.a_party.mynasaapp.ui.main.settings
 
 
 import android.os.Bundle
-import androidx.transition.ChangeBounds
-import androidx.transition.TransitionManager
+import android.transition.ChangeBounds
+import android.transition.TransitionManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -52,6 +52,9 @@ class SettingsFragment : Fragment() {
             }
         })
 
+
+
+
         view.findViewById<Button>(R.id.button).setOnClickListener(object: View.OnClickListener{
             override fun onClick(v: View?) {
                 show_about(view)
@@ -59,23 +62,17 @@ class SettingsFragment : Fragment() {
 
         })
 
-
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-    }
 
     private fun show_about(view:View) {
         val constraitSet = ConstraintSet()
-        constraitSet.clone(view.context,R.layout.settings_fragment_end)
+        constraitSet.clone(activity,R.layout.settings_fragment_end)
 
         val transition = ChangeBounds()
         transition.interpolator = AnticipateInterpolator(1.0f)
-        transition.duration=2000
+        transition.duration=1000
 
         val constraintLayout = view.findViewById<ConstraintLayout>(R.id.frameLayoutSettings)
 
