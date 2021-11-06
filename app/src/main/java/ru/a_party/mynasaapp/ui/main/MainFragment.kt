@@ -1,5 +1,6 @@
 package ru.a_party.mynasaapp.ui.main
 
+import android.animation.ObjectAnimator
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -18,11 +19,13 @@ import retrofit2.Response
 import ru.a_party.mynasaapp.API_KEY
 import ru.a_party.mynasaapp.R
 import android.content.Intent
+import android.widget.TextView
 import androidx.constraintlayout.motion.widget.MotionLayout
 import java.lang.Exception
 
 
 class MainFragment : Fragment() {
+    private var isRotate=false
 
     companion object {
         fun newInstance() = MainFragment()
@@ -38,7 +41,7 @@ class MainFragment : Fragment() {
         return inflater.inflate(R.layout.main_fragment_start_cl, container, false)
     }
 
-    override fun onViewCreated(view: View,savedInstanceState: Bundle?) {
+     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
@@ -80,5 +83,24 @@ class MainFragment : Fragment() {
             }
         }
         viewModel.loadData()
+
+         view.findViewById<AppCompatImageView>(R.id.appCompatImageView).setOnClickListener(object : View.OnClickListener{
+             override fun onClick(v: View?) {
+                 if (!isRotate) {
+                     view.findViewById<AppCompatImageView>(R.id.appCompatImageView)
+                         .animate()
+                         .rotationY(360f)
+                         .setDuration(1000)
+                 } else {
+                     view.findViewById<AppCompatImageView>(R.id.appCompatImageView)
+                         .animate()
+                         .rotationY(0f)
+                         .setDuration(1000)
+                 }
+                 isRotate=!isRotate
+             }
+
+         })
+
     }
 }

@@ -1,11 +1,17 @@
 package ru.a_party.mynasaapp.ui.main.settings
 
-import androidx.lifecycle.ViewModelProvider
+
 import android.os.Bundle
+import androidx.transition.ChangeBounds
+import androidx.transition.TransitionManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnticipateInterpolator
+import android.widget.Button
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import ru.a_party.mynasaapp.MainActivity
@@ -45,6 +51,35 @@ class SettingsFragment : Fragment() {
                 }
             }
         })
+
+        view.findViewById<Button>(R.id.button).setOnClickListener(object: View.OnClickListener{
+            override fun onClick(v: View?) {
+                show_about(view)
+            }
+
+        })
+
+
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+    }
+
+    private fun show_about(view:View) {
+        val constraitSet = ConstraintSet()
+        constraitSet.clone(view.context,R.layout.settings_fragment_end)
+
+        val transition = ChangeBounds()
+        transition.interpolator = AnticipateInterpolator(1.0f)
+        transition.duration=2000
+
+        val constraintLayout = view.findViewById<ConstraintLayout>(R.id.frameLayoutSettings)
+
+        TransitionManager.beginDelayedTransition(constraintLayout,transition)
+        constraitSet.applyTo(constraintLayout)
     }
 }
