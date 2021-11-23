@@ -19,6 +19,12 @@ import retrofit2.Response
 import ru.a_party.mynasaapp.API_KEY
 import ru.a_party.mynasaapp.R
 import android.content.Intent
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.StyleSpan
+import android.text.style.UnderlineSpan
 import android.widget.TextView
 import androidx.constraintlayout.motion.widget.MotionLayout
 import java.lang.Exception
@@ -41,6 +47,22 @@ class MainFragment : Fragment() {
         return inflater.inflate(R.layout.main_fragment_start_cl, container, false)
     }
 
+    fun spanNasaText(text: String): Spannable {
+        var startSpan = 0
+        var endSpan = 0
+        val spanText = SpannableString(text)
+
+        while(true) {
+            startSpan = text.indexOf("NASA",endSpan)
+            var us =UnderlineSpan()
+            if (startSpan<0) break
+            endSpan = startSpan+4
+            spanText.setSpan(UnderlineSpan(),startSpan,endSpan, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            spanText.setSpan( StyleSpan(Typeface.ITALIC), startSpan, endSpan, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        return spanText
+    }
+
      override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
@@ -51,7 +73,7 @@ class MainFragment : Fragment() {
                     //тут просто идет загрузка
                 }
                 is AdopLoadState.Success -> {
-                    view.findViewById<MaterialTextView>(R.id.materialTextView).text=it.nasaData.explanation
+                    view.findViewById<MaterialTextView>(R.id.materialTextView).text=spanNasaText(it.nasaData.explanation)
                     var imgView = view.findViewById<AppCompatImageView>(R.id.appCompatImageView)
                     //var videoView = view.findViewById<WebView>(R.id.webView2)
                     var motion = view.findViewById<MotionLayout>(R.id.motion)
