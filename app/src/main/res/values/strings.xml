@@ -9,4 +9,7 @@
     <string name="chipMarsCaption">Марс</string>
     <string name="chipSunCaption">Солнце</string>
     <string name="aboutCaption">Автор: Студент какого то курса :)</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
