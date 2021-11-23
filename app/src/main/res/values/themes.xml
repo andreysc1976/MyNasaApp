@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:fontFamily">@font/marial</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -24,6 +25,7 @@
         <item name="colorSecondaryVariant">@color/mars1</item>
         <item name="colorOnSecondary">@color/mars1</item>
         <item name="colorBackgroundFloating">@color/black</item>
+        <item name="android:fontFamily">@font/marial</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -38,6 +40,7 @@
         <item name="colorSecondary">@color/yellow1</item>
         <item name="colorSecondaryVariant">@color/yellow1</item>
         <item name="colorOnSecondary">@color/yellow1</item>
+        <item name="android:fontFamily">@font/marial</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -45,6 +48,7 @@
 
     <style name="MyTextLayout" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
         <item name="android:textColorHint">@color/yellow1</item>
+        <item name="android:fontFamily">@font/marial</item>
     </style>
 
 

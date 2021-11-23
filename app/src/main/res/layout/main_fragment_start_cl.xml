@@ -58,7 +58,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:maxLines="24"
-                    android:minLines="12" />
+                    android:minLines="12"
+                    android:textStyle="bold" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
